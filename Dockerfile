@@ -23,7 +23,9 @@ RUN su - git -c 'mkdir -p $HOME/bin \
 	&& gitolite/install -to $HOME/bin'
 
 # setup with built-in ssh key
-RUN ssh-keygen -f admin -t rsa -N ''
+RUN echo about to output key
+RUN echo "$SSH_KEY" > /admin.pub
+RUN echo admin.pub done!!!
 RUN su - git -c '$HOME/bin/gitolite setup -pk /admin.pub'
 
 # prevent the perl warning
