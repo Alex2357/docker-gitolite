@@ -24,9 +24,10 @@ RUN su - git -c 'mkdir -p $HOME/bin \
 
 # setup with built-in ssh key
 RUN echo about to output key
-RUN echo "$SSH_KEY" > /admin.pub
+RUN su - git -c 'echo "$SSH_KEY" > /tmp/admin.pub'
+
 RUN echo admin.pub done!!!
-RUN su - git -c '$HOME/bin/gitolite setup -pk /admin.pub'
+RUN su - git -c '$HOME/bin/gitolite setup -pk /tmp/admin.pub'
 
 # prevent the perl warning
 RUN sed  -i 's/AcceptEnv/# \0/' /etc/ssh/sshd_config
