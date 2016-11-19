@@ -1,5 +1,8 @@
 #! /bin/sh -
 
+
+
+
 # handle the gitolite.rc
 if [  -f "/home/git/repositories/gitolite.rc" ]; then
   echo 'import rc file'
@@ -10,13 +13,17 @@ else
 fi
 
 if [ -f /home/git/repositories/gitolite-configured ]; then
-  su git -c "/home/git/bin/gitolite setup"
+  echo "gitolite already configured. performing setup" >>/home/git/gitolog.txt
+  su git -c "/home/git/bin/gitolite setup>>/home/git/gitolog.txt"
 else
   # handle the ssh key
   if [ -n "$SSH_KEY" ]; then
-    echo "Replace the admin ssh key.\n"
+    echo "Replace the admin ssh key.\n">>/home/git/gitolog.txt
     echo $SSH_KEY > /home/git/admin.pub
-    su git -c "/home/git/bin/gitolite setup -pk=/home/git/admin.pub"
+    chown git:git /home/git/admin.pub
+    chown -R git:git /home/git/repositories
+
+    su git -c "/home/git/bin/gitolite setup -pk /home/git/admin.pub > /home/git/gitolog2.txt 2>/home/git/gitolog2.txt"
   else
     su git -c "/home/git/bin/gitolite setup"
     echo "The built-in private key for admin:\n"

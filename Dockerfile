@@ -24,7 +24,7 @@ RUN su - git -c 'mkdir -p $HOME/bin \
 
 # setup with built-in ssh key
 RUN ssh-keygen -f admin -t rsa -N ''
-RUN su - git -c '$HOME/bin/gitolite setup -pk /admin.pub'
+#RUN su - git -c '$HOME/bin/gitolite setup -pk /admin.pub'
 
 # prevent the perl warning
 RUN sed  -i 's/AcceptEnv/# \0/' /etc/ssh/sshd_config
