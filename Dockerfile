@@ -5,7 +5,7 @@
 #		 docker build -t gitolite .
 #
 # 	Run:
-#    docker run -d --name gitolite -p 22022:22 -v /var/data/git:/home/git/repositories -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)"  gitolite
+#    docker run -d --name gitolite -p 22022:22 -v /docker/volumes/gitoliterepositories:/home/git/repositories -e SSH_KEY="$(cat ~/.ssh/id_rsa.pub)"  gitolite
 
 FROM ubuntu
 MAINTAINER Alex K <akubenko@gmail.com>
