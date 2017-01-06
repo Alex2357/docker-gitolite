@@ -3,7 +3,7 @@
 ## New gitolite installation
 Use `docker run` directly. Example:
 
-        $ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)"  -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex23/gitolite
+        $ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)"  -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex2357/docker-gitolite
 
 where /docker/volumes/gitoliterepositories is a folder for all gitolite repositories. 
 
@@ -24,11 +24,11 @@ additional argument `KEEP_USERSKEYS_AND_REPOSITORIES`. BEWARE admin.pub will be 
 3. Run any of those. Most likely you need 2nd option
 
 ```
-$ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)"  -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex23/gitolite
+$ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)"  -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex2357/docker-gitolite
 ```
 
 ```
-$ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)" -e KEEP_USERSKEYS_AND_REPOSITORIES=dummytextvalue -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex23/gitolite
+$ docker run -d -p 2222:22 --name gitolite -e SSH_KEY="$(cat  ~/.ssh/id_rsa.pub)" -e KEEP_USERSKEYS_AND_REPOSITORIES=dummytextvalue -v /docker/volumes/gitoliterepositories:/home/git/repositories  alex2357/docker-gitolite
 ```
 
 
